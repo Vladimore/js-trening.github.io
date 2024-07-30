@@ -1,0 +1,36 @@
+html {
+    background: azure;
+}
+p,
+ol,
+li{
+    color: black;
+    font-size: 15px;
+    line-height: 2;
+    letter-spacing: 1px;
+    font-family: "Edu AU VIC WA NT Hand", cursive;
+}
+
+h1{
+    font-size: 60px;
+    text-align: center;
+    color: lightcoral;
+}
+
+body{
+    width: 900px;
+    margin: 0 auto;
+    background-color: aquamarine;
+    padding: 0 20px 20px 20px;
+    border: 5px solid black;
+}
+
+img[src]{
+    display: block;
+    margin: 0 auto;
+    width: 900px;
+}
+
+div{
+    padding: 20px 0 0 0;
+}
