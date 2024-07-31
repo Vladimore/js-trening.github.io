@@ -1,30 +1,74 @@
-let myH1 = document.querySelector("h1");
-let myImage = document.querySelector("img");
-let myButton = document.querySelector("button");
+let randomNumber = Math.floor(Math.random() * 100) + 1;
 
-if(!localStorage.getItem("name")){
-    setNamePerson();
-}
-else{
-    myH1.textContent = "Hello, " + localStorage.getItem("name");
-}
+let guesses = document.querySelector(".guesses");
+let lastResult = document.querySelector(".lastResult");
+let lowOrHi = document.querySelector(".lowOrHi");
 
-myImage.onclick = function () {
-    let mySrc = myImage.getAttribute("src");
-    if (mySrc === "images/valorant1.jpg"){
-        myImage.setAttribute("src","images/valorant2.jpg");
+let guessSubmit = document.querySelector(".guessSubmit");
+let guessField = document.querySelector(".guessField");
+
+let guessCount = 1;
+let resetButton;
+guessField.focus();
+
+guessSubmit.addEventListener("click", checkGuess);
+
+function checkGuess(){
+    let userGuess = Number(guessField.value);
+    if (userGuess === 1){
+        guesses.textContent = "Previous guesses: ";
+    }
+    guesses.textContent += userGuess + " ";
+
+    if (randomNumber === userGuess){
+        lastResult.textContent = "Congratulations! You got it right!";
+        lastResult.style.backgroundColor = "green";
+        setGameOver();
+    }
+    else if(guessCount === 10){
+        lastResult.textContent = "!!!GAME OVER!!!";
+        setGameOver();
     }
     else{
-        myImage.setAttribute("src", "images/valorant1.jpg");
+        lastResult.textContent = "wrong";
+        lastResult.style.backgroundColor = "red";
+        if (randomNumber < userGuess){
+            lowOrHi.textContent = "too high";
+        }
+        else if(randomNumber > userGuess){
+            lowOrHi.textContent = "too low";
+        }
+
+        guessCount++;
+        guessField.value = "";
+        guessField.focus();
     }
-};
 
-function setNamePerson(){
-    let name = prompt("Enter your name:");
-    localStorage.setItem("name", name);
-    myH1.textContent = "Hello, " + name;
 }
 
-myButton.onclick = function(){
-    setNamePerson();
+function setGameOver(){
+    guessSubmit.disabled = true;
+    guessField.disabled = true;
+    resetButton = document.createElement("button");
+    resetButton.textContent = "Reset game";
+    document.body.appendChild(resetButton);
+    resetButton.addEventListener("click", resetGame);
 }
+
+function resetGame(){
+    guessCount = 1;
+     let resultParams = document.querySelectorAll(".resultParas p");
+     for (let i = 0; i < resultParams.length; i++){
+         resultParams[i].textContent = "";
+     }
+     resetButton.parentNode.removeChild(resetButton);
+     guessField.disabled = false;
+     guessSubmit.disabled = false;
+     guessField.value = "";
+     guessField.focus();
+
+     lastResult.style.backgroundColor = "white";
+     randomNumber = Math.floor(Math.random() * 100) + 1;
+}
+
+

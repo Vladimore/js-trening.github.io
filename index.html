@@ -1,41 +1,31 @@
-<!doctype html>
-<html lang="en">
+
+<!DOCTYPE html>
+<html lang="en-US">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="styles/style.css" rel="stylesheet" type="text/css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap"
-          rel="stylesheet">
-    <title>JS trening project</title>
+    <meta charset="utf-8">
+
+    <title>Number guessing game</title>
+
+    <link href="styles/style.css" rel="stylesheet" >
 </head>
+
 <body>
-<h1>Valorant is game</h1>
-<img src="images/valorant1.jpg" alt="image valorant">
-<ol>
-    Because:
-    <li>
-        Shooter
-    </li>
-    <li>
-        Team
-    </li>
-    <li>
-        PC game
-    </li>
-</ol>
-<p>Blend your style and experience on a global, competitive stage.
-    You have 13 rounds to attack and defend your side using sharp gunplay and tactical abilities.
-    And, with one life per-round, you'll need to think faster than your opponent if you want to survive.
-    Take on foes across Competitive and Unranked modes as well as Deathmatch and Spike Rush.
-</p>
-<a href="https://playvalorant.com/en-gb/">VALORANT</a>
-<div>
-    <button>Change person</button>
+<h1>Number guessing game</h1>
+
+<p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
+
+<div class="form">
+    <label for="guessField">Enter a guess: </label>
+    <input type="number" min="1" max="100" required id="guessField" class="guessField">
+    <input type="submit" value="Submit guess" class="guessSubmit">
 </div>
-<script src="scripts/main.js"></script>
+
+<div class="resultParas">
+    <p class="guesses"></p>
+    <p class="lastResult"></p>
+    <p class="lowOrHi"></p>
+</div>
+
 </body>
+<script src="scripts/main.js" defer></script>
 </html>
